@@ -1,5 +1,10 @@
-import { Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import Home from "./Home";
 
 export default function Router() {
-  return <Routes></Routes>;
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+    </Routes>
+  );
 }
