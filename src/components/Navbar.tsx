@@ -2,7 +2,7 @@ import "./Navbar.css";
 
 import { Link } from "react-router-dom";
 
-export default function Links() {
+export default function Navbar() {
   return (
     <div className="links">
       <Link to={"/"} title="Home">
