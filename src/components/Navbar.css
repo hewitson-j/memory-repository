@@ -1,9 +1,15 @@
 .links {
   display: flex;
-  width: 50%;
+  width: 60%;
   margin: auto;
   justify-content: space-evenly;
-  background-color: rgb(12, 148, 216);
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    #0c94d8 10%,
+    #0c94d8 90%,
+    transparent 100%
+  );
 }
 
 .links button {
@@ -12,8 +18,8 @@
   padding: 0.5rem;
   font-family: "Caveat", cursive, "Sevillana", cursive, "Times New Roman", Times,
     serif;
-  background-color: rgb(12, 148, 216);
   color: white;
+  background-color: transparent;
 }
 
 .links button:hover {

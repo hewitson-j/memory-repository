@@ -3,4 +3,11 @@ body {
   font-family: "Dancing Script", cursive, "Caveat", cursive, "Sevillana",
     cursive, "Times New Roman", Times, serif;
   text-align: center;
+  background: linear-gradient(
+    to right,
+    white 0%,
+    #f9e4bc 15%,
+    #f9e4bc 85%,
+    white
+  );
 }
