@@ -1,3 +1,5 @@
+import "./Home.css";
+
 export default function Home() {
-  return <>Home</>;
+  return <div className="home">Home</div>;
 }

@@ -1,3 +1,5 @@
+import "./Browse.css";
+
 export default function Browse() {
-  return <>Browse</>;
+  return <div className="browse">Browse</div>;
 }
