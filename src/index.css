@@ -11,3 +11,8 @@ body {
     white
   );
 }
+
+::selection {
+  color: white;
+  background-color: goldenrod;
+}

@@ -1,0 +1,31 @@
+.cover {
+  width: 300px;
+  height: 400px;
+  text-align: center;
+  padding: 0.75rem;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.25);
+  transition-duration: 0.5s;
+  margin: 1rem;
+}
+
+.cover img {
+  width: 300px;
+  height: 300px;
+  margin: 0;
+  padding: 0;
+}
+
+.cover-body {
+  height: 25%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.cover-body h3 {
+  margin: 0;
+}
+
+.cover:hover {
+  transform: scale(1.1);
+}
