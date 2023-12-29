@@ -11,9 +11,6 @@ export default function Navbar() {
       <Link to={"browse"} title="Browse Books">
         <button>Browse Books</button>
       </Link>
-      <Link to={"search"} title="Search">
-        <button>Search Books</button>
-      </Link>
     </div>
   );
 }
