@@ -21,7 +21,7 @@ export default function Cover({
         console.log(id);
       }}
     >
-      <img src={imageSource} alt={title} title={title} />
+      <img src={imageSource} alt={title} title={`Go to book: ${title}`} />
       <div className="cover-body">
         <h3>{title}</h3>
         <p>{description}</p>
