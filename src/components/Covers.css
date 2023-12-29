@@ -1,0 +1,7 @@
+.covers {
+  display: flex;
+  width: 70%;
+  margin: auto;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
