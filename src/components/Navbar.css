@@ -20,8 +20,10 @@
     serif;
   color: white;
   background-color: transparent;
+  transition-duration: 0.5s;
 }
 
 .links button:hover {
   background-color: rgb(11, 116, 169);
+  cursor: pointer;
 }
