@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import "./Cover.css";
 
 export interface CoverProps {
@@ -13,12 +14,14 @@ export default function Cover({
   title = "Title",
   description = "Description",
 }: CoverProps) {
+  const navigate = useNavigate();
+
   return (
     <div
       className="cover"
       title={title}
       onClick={() => {
-        console.log(id);
+        navigate(`book/${id}`);
       }}
     >
       <img src={imageSource} alt={title} title={`Go to book: ${title}`} />
