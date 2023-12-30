@@ -21,7 +21,7 @@ export default function Cover({
       className="cover"
       title={title}
       onClick={() => {
-        navigate(`book/${id}`);
+        navigate(`/book/${id}`);
       }}
     >
       <img src={imageSource} alt={title} title={`Go to book: ${title}`} />

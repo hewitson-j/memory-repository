@@ -16,6 +16,7 @@ export default function Covers({ array, limit }: CoversProps) {
       {array.map((entry) => {
         return (
           <Cover
+            key={entry.id}
             id={entry.id}
             title={entry.title}
             imageSource={entry.imageSource}
