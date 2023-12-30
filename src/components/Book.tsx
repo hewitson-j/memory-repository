@@ -9,5 +9,11 @@ export default function Book() {
     (cover) => cover.id === parseInt(itemId ?? "0")
   );
 
-  return <div className="book">{entry?.title}</div>;
+  return (
+    <div className="book">
+      <h3>{entry?.title}</h3>
+      <p>{entry?.description}</p>
+      <img src={entry?.imageSource} alt={entry?.title} title={entry?.title} />
+    </div>
+  );
 }
