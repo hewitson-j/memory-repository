@@ -17,6 +17,8 @@ export default function Book() {
   const [isPrevDisabled, setIsPrevDisabled] = useState(true);
   const [isNextDisabled, setIsNextDisabled] = useState(false);
 
+  const isButtonDisabled = !entry?.images;
+
   const handlePrev = () => {
     if (currentImage > 0) {
       setNextImage(currentImage);
@@ -54,7 +56,10 @@ export default function Book() {
       <h3>{entry?.title}</h3>
       <p>{entry?.description}</p>
       <div className="image-carousel">
-        <button disabled={isPrevDisabled} onClick={handlePrev}>
+        <button
+          disabled={isPrevDisabled || isButtonDisabled}
+          onClick={handlePrev}
+        >
           Previous
         </button>
         <img
@@ -62,7 +67,10 @@ export default function Book() {
           alt={entry?.title}
           title={entry?.title}
         />
-        <button disabled={isNextDisabled} onClick={handleNext}>
+        <button
+          disabled={isNextDisabled || isButtonDisabled}
+          onClick={handleNext}
+        >
           Next
         </button>
       </div>
