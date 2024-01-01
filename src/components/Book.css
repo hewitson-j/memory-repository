@@ -6,4 +6,5 @@
   display: flex;
   flex-wrap: nowrap;
   margin: auto;
+  justify-content: space-around;
 }
