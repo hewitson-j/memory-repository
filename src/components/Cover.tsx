@@ -6,6 +6,7 @@ export interface CoverProps {
   imageSource?: string;
   title?: string;
   description?: string;
+  images?: string[];
 }
 
 export default function Cover({

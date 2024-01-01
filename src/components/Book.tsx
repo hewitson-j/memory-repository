@@ -13,7 +13,11 @@ export default function Book() {
     <div className="book">
       <h3>{entry?.title}</h3>
       <p>{entry?.description}</p>
-      <img src={entry?.imageSource} alt={entry?.title} title={entry?.title} />
+      <img
+        src={entry?.images?.[0] || entry?.imageSource}
+        alt={entry?.title}
+        title={entry?.title}
+      />
     </div>
   );
 }

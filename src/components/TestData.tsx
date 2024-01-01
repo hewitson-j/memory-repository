@@ -7,6 +7,7 @@ export const testCoversData: CoverProps[] = [
     imageSource:
       "https://www.shutterstock.com/image-photo/exercise-activity-family-outdoors-vitality-260nw-624977717.jpg",
     description: "Parents and Children in the park.",
+    images: ["/1.jpg", "/2 -1.jpg"],
   },
   {
     id: 101,
