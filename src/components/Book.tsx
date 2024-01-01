@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import "./Book.css";
 import { testCoversData } from "./TestData";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Book() {
   const { itemId } = useParams();
@@ -19,6 +19,50 @@ export default function Book() {
 
   const isButtonDisabled = !entry?.images;
 
+  const [imageDimensions, setImageDimensions] = useState({
+    width: 0,
+    height: 0,
+  });
+
+  const calculateImageDimensions = (src: string) => {
+    const img = new Image();
+    img.src = src;
+
+    img.onload = () => {
+      const aspectRatio = img.width / img.height;
+      let maxWidth = 600;
+      let maxHeight = 600;
+
+      if (window.innerWidth <= 650) {
+        maxHeight = 450;
+        maxWidth = 450;
+      }
+
+      if (window.innerWidth <= 450) {
+        maxHeight = 250;
+        maxWidth = 250;
+      }
+
+      let width = img.width;
+      let height = img.height;
+
+      if (width > maxWidth) {
+        width = maxWidth;
+        height = width / aspectRatio;
+      }
+      if (height > maxHeight) {
+        height = maxHeight;
+        width = height * aspectRatio;
+      }
+
+      setImageDimensions({ width, height });
+    };
+  };
+
+  useEffect(() => {
+    calculateImageDimensions(entry?.images?.[currentImage] || "");
+  }, [entry?.images, currentImage]);
+
   const handlePrev = () => {
     if (currentImage > 0) {
       setNextImage(currentImage);
@@ -30,9 +74,6 @@ export default function Book() {
     if (prevImage === 0) {
       setIsPrevDisabled(true);
     }
-    console.log(currentImage);
-    console.log(prevImage);
-    console.log(nextImage);
   };
 
   const handleNext = () => {
@@ -46,9 +87,6 @@ export default function Book() {
     if (entry?.images?.length && currentImage === entry?.images?.length - 2) {
       setIsNextDisabled(true);
     }
-    console.log(currentImage);
-    console.log(prevImage);
-    console.log(nextImage);
   };
 
   return (
@@ -66,6 +104,10 @@ export default function Book() {
           src={entry?.images?.[currentImage] || entry?.imageSource}
           alt={entry?.title}
           title={entry?.title}
+          style={{
+            width: imageDimensions.width,
+            height: imageDimensions.height,
+          }}
         />
         <button
           disabled={isNextDisabled || isButtonDisabled}
