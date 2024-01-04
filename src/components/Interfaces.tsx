@@ -5,3 +5,8 @@ export interface BookPage {
   book: number;
   is_cover: boolean;
 }
+
+export interface BookProps {
+  id: number;
+  title: string;
+}
