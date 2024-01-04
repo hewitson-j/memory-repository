@@ -9,8 +9,6 @@ export default function Home() {
   const [booksData, setBooksData] = useState<BookProps[]>();
   const [combinedData, setCombinedData] = useState<CoverProps[]>();
 
-  // To-do: create interfaces, plan how to join results to be used for covers and entries
-
   const fetchBookCoverPages = async () => {
     console.log("Fetching book cover pages...");
     const { data, error } = await supabase
