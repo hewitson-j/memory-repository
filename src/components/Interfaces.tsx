@@ -10,3 +10,9 @@ export interface BookProps {
   id: number;
   title: string;
 }
+export interface CoverProps {
+  id: number;
+  imageSource?: string;
+  title?: string;
+  description?: string;
+}

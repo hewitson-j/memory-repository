@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import supabase from "../supabaseconfig";
 import Covers from "./Covers";
 import "./Home.css";
-import { testCoversData } from "./TestData";
-import { BookPage, BookProps } from "./Interfaces";
+import { BookPage, BookProps, CoverProps } from "./Interfaces";
 
 export default function Home() {
   const [coversData, setCoversData] = useState<BookPage[]>();
   const [booksData, setBooksData] = useState<BookProps[]>();
+  const [combinedData, setCombinedData] = useState<CoverProps[]>();
 
   // To-do: create interfaces, plan how to join results to be used for covers and entries
 
@@ -39,14 +39,25 @@ export default function Home() {
   useEffect(() => {
     fetchBookCoverPages();
     fetchBooks();
-    console.log(coversData);
-    console.log(booksData);
   }, []);
+
+  useEffect(() => {
+    const combined = booksData?.map((book) => {
+      const cover = coversData?.find((cover) => cover.book === book.id);
+      return {
+        id: book.id,
+        title: book.title,
+        description: cover?.name,
+        imageSource: cover?.image_url,
+      };
+    });
+    setCombinedData(combined);
+  }, [booksData, coversData]);
 
   return (
     <div className="home">
       <h3>Popular Books</h3>
-      <Covers array={testCoversData} limit={4} />
+      <Covers array={combinedData || []} limit={4} />
     </div>
   );
 }

@@ -1,13 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "./Cover.css";
-
-export interface CoverProps {
-  id: number;
-  imageSource?: string;
-  title?: string;
-  description?: string;
-  images?: string[];
-}
+import { CoverProps } from "./Interfaces";
 
 export default function Cover({
   id = 0,

@@ -1,5 +1,6 @@
-import Cover, { CoverProps } from "./Cover";
+import Cover from "./Cover";
 import "./Covers.css";
+import { CoverProps } from "./Interfaces";
 
 interface CoversProps {
   array: CoverProps[];
