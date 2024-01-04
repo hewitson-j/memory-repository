@@ -1,14 +1,46 @@
 import { useParams } from "react-router-dom";
 import "./Book.css";
-import { testCoversData } from "./TestData";
 import { useEffect, useState } from "react";
+import supabase from "../supabaseconfig";
+import { BookPage, BookProps } from "./Interfaces";
 
 export default function Book() {
   const { itemId } = useParams();
 
-  const entry = testCoversData.find(
-    (cover) => cover.id === parseInt(itemId ?? "0")
-  );
+  const [bookPages, setBookPages] = useState<BookPage[]>();
+  const [book, setBook] = useState<BookProps[]>();
+
+  const fetchBookPages = async () => {
+    const { data, error } = await supabase
+      .from("book_page")
+      .select("*")
+      .eq("book", itemId)
+      .order("id", { ascending: true });
+
+    if (error) {
+      console.log(error);
+    } else {
+      setBookPages(data);
+    }
+  };
+
+  const fetchBook = async () => {
+    const { data, error } = await supabase
+      .from("book")
+      .select("*")
+      .eq("id", itemId);
+
+    if (error) {
+      console.log(error);
+    } else {
+      setBook(data);
+    }
+  };
+
+  useEffect(() => {
+    fetchBookPages();
+    fetchBook();
+  }, []);
 
   const [prevImage, setPrevImage] = useState(-1);
   const [currentImage, setCurrentImage] = useState(0);
@@ -16,8 +48,6 @@ export default function Book() {
 
   const [isPrevDisabled, setIsPrevDisabled] = useState(true);
   const [isNextDisabled, setIsNextDisabled] = useState(false);
-
-  const isButtonDisabled = !entry?.images;
 
   const [imageDimensions, setImageDimensions] = useState({
     width: 0,
@@ -60,8 +90,8 @@ export default function Book() {
   };
 
   useEffect(() => {
-    calculateImageDimensions(entry?.images?.[currentImage] || "");
-  }, [entry?.images, currentImage]);
+    calculateImageDimensions(bookPages?.[currentImage].image_url || "");
+  }, [bookPages, currentImage]);
 
   const handlePrev = () => {
     if (currentImage > 0) {
@@ -77,42 +107,36 @@ export default function Book() {
   };
 
   const handleNext = () => {
-    if (entry?.images && currentImage < entry.images.length - 1) {
+    if (bookPages && currentImage < bookPages.length - 1) {
       setPrevImage(currentImage);
       setCurrentImage(nextImage);
       setNextImage(nextImage + 1);
     }
 
     setIsPrevDisabled(false);
-    if (entry?.images?.length && currentImage === entry?.images?.length - 2) {
+    if (bookPages && currentImage === bookPages.length - 2) {
       setIsNextDisabled(true);
     }
   };
 
   return (
     <div className="book">
-      <h3>{entry?.title}</h3>
-      <p>{entry?.description}</p>
+      <h3>{book?.[0].title || "Loading..."}</h3>
+      <p>{book?.[0].title || "Loading..."}</p>
       <div className="image-carousel">
-        <button
-          disabled={isPrevDisabled || isButtonDisabled}
-          onClick={handlePrev}
-        >
+        <button disabled={isPrevDisabled} onClick={handlePrev}>
           Previous
         </button>
         <img
-          src={entry?.images?.[currentImage] || entry?.imageSource}
-          alt={entry?.title}
-          title={entry?.title}
+          src={bookPages?.[currentImage].image_url}
+          alt={bookPages?.[currentImage].name}
+          title={bookPages?.[currentImage].name}
           style={{
             width: imageDimensions.width,
             height: imageDimensions.height,
           }}
         />
-        <button
-          disabled={isNextDisabled || isButtonDisabled}
-          onClick={handleNext}
-        >
+        <button disabled={isNextDisabled} onClick={handleNext}>
           Next
         </button>
       </div>
