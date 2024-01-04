@@ -9,6 +9,7 @@ export interface BookPage {
 export interface BookProps {
   id: number;
   title: string;
+  description: string;
 }
 export interface CoverProps {
   id: number;

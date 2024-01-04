@@ -122,7 +122,7 @@ export default function Book() {
   return (
     <div className="book">
       <h3>{book?.[0].title || "Loading..."}</h3>
-      <p>{book?.[0].title || "Loading..."}</p>
+      <p>{book?.[0].description || "Loading..."}</p>
       <div className="image-carousel">
         <button disabled={isPrevDisabled} onClick={handlePrev}>
           Previous
@@ -140,6 +140,7 @@ export default function Book() {
           Next
         </button>
       </div>
+      <p>{bookPages?.[currentImage].name}</p>
     </div>
   );
 }

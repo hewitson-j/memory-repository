@@ -45,7 +45,7 @@ export default function Home() {
       return {
         id: book.id,
         title: book.title,
-        description: cover?.name,
+        description: book.description,
         imageSource: cover?.image_url,
       };
     });
