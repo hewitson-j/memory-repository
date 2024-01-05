@@ -55,6 +55,7 @@ export default function Book() {
   });
 
   const [rotate, setRotate] = useState(0);
+  // const [carouselHeight, setCarouselHeight] = useState("initial");
 
   const calculateImageDimensions = (src: string) => {
     const img = new Image();
@@ -121,11 +122,27 @@ export default function Book() {
     }
   };
 
+  const handleRotateRight = () => {
+    setRotate(rotate + 90);
+  };
+
+  const handleRotateLeft = () => {
+    setRotate(rotate - 90);
+  };
+
   return (
     <div className="book">
       <h3>{book?.[0].title || "Loading..."}</h3>
-      <p>{book?.[0].description || "Loading..."}</p>
-      <div className="image-carousel">
+      <h4>{book?.[0].description || "Loading..."}</h4>
+      <div
+        className="image-carousel"
+        style={{
+          height:
+            imageDimensions.width > imageDimensions.height
+              ? `${imageDimensions.width}px`
+              : `${imageDimensions.height}px`,
+        }}
+      >
         <button disabled={isPrevDisabled} onClick={handlePrev}>
           Previous
         </button>
@@ -144,22 +161,10 @@ export default function Book() {
         </button>
       </div>
       <div className="rotate-buttons">
-        <button
-          onClick={() => {
-            setRotate(rotate - 90);
-          }}
-        >
-          Rotate Left
-        </button>
-        <button
-          onClick={() => {
-            setRotate(rotate + 90);
-          }}
-        >
-          Rotate Right
-        </button>
+        <button onClick={handleRotateLeft}>Rotate Left</button>
+        <button onClick={handleRotateRight}>Rotate Right</button>
       </div>
-      <h3>{bookPages?.[currentImage].name}</h3>
+      <h4>{bookPages?.[currentImage].name}</h4>
     </div>
   );
 }

@@ -4,9 +4,10 @@
 
 .image-carousel {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   margin: auto;
   justify-content: space-around;
+  align-content: center;
 }
 
 .rotate-buttons {
