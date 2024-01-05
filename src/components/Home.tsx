@@ -62,8 +62,13 @@ export default function Home() {
 
   return (
     <div className="home">
+      <h2>Welcome!</h2>
+      <p>
+        Here you can take a look at some of our popular memory books and photo
+        albums.
+      </p>
       {isLoading ? (
-        <p>Loading popular books...</p>
+        <h3>Loading popular books...</h3>
       ) : (
         <>
           <h3>Popular Books</h3>

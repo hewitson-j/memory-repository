@@ -142,43 +142,45 @@ export default function Book() {
         <p>Loading...</p>
       ) : (
         <>
-          <h3>{book?.[0].title || "Not Found"}</h3>
-          <h4>{book?.[0].description || "Not Found"}</h4>
-          <div
-            className="image-carousel"
-            style={{
-              height:
-                imageDimensions.width > imageDimensions.height
-                  ? `${imageDimensions.width}px`
-                  : `${imageDimensions.height}px`,
-            }}
-          >
-            <button
-              className="move-buttons"
-              disabled={isPrevDisabled}
-              onClick={handlePrev}
-            >
-              Previous
-            </button>
-            <img
-              src={bookPages?.[currentImage].image_url}
-              alt={bookPages?.[currentImage].name}
-              title={bookPages?.[currentImage].name}
+          <div className="book-content">
+            <h3>{book?.[0].title || "Not Found"}</h3>
+            <h4>{book?.[0].description || "Not Found"}</h4>
+            <div
+              className="image-carousel"
               style={{
-                width: imageDimensions.width,
-                height: imageDimensions.height,
-                transform: `rotate(${rotate}deg)`,
+                height:
+                  imageDimensions.width > imageDimensions.height
+                    ? `${imageDimensions.width}px`
+                    : `${imageDimensions.height}px`,
               }}
-            />
-            <button
-              className="move-buttons"
-              disabled={isNextDisabled}
-              onClick={handleNext}
             >
-              Next
-            </button>
+              <button
+                className="move-buttons"
+                disabled={isPrevDisabled}
+                onClick={handlePrev}
+              >
+                Previous
+              </button>
+              <img
+                src={bookPages?.[currentImage].image_url}
+                alt={bookPages?.[currentImage].name}
+                title={bookPages?.[currentImage].name}
+                style={{
+                  width: imageDimensions.width,
+                  height: imageDimensions.height,
+                  transform: `rotate(${rotate}deg)`,
+                }}
+              />
+              <button
+                className="move-buttons"
+                disabled={isNextDisabled}
+                onClick={handleNext}
+              >
+                Next
+              </button>
+            </div>
+            <h4>{bookPages?.[currentImage].name}</h4>
           </div>
-          <h4>{bookPages?.[currentImage].name}</h4>
           <div className="rotate-button-container">
             <button
               className="rotate-buttons"
