@@ -54,6 +54,8 @@ export default function Book() {
     height: 0,
   });
 
+  const [rotate, setRotate] = useState(0);
+
   const calculateImageDimensions = (src: string) => {
     const img = new Image();
     img.src = src;
@@ -134,13 +136,30 @@ export default function Book() {
           style={{
             width: imageDimensions.width,
             height: imageDimensions.height,
+            transform: `rotate(${rotate}deg)`,
           }}
         />
         <button disabled={isNextDisabled} onClick={handleNext}>
           Next
         </button>
       </div>
-      <p>{bookPages?.[currentImage].name}</p>
+      <div className="rotate-buttons">
+        <button
+          onClick={() => {
+            setRotate(rotate - 90);
+          }}
+        >
+          Rotate Left
+        </button>
+        <button
+          onClick={() => {
+            setRotate(rotate + 90);
+          }}
+        >
+          Rotate Right
+        </button>
+      </div>
+      <h3>{bookPages?.[currentImage].name}</h3>
     </div>
   );
 }

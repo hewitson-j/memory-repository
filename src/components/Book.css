@@ -8,3 +8,10 @@
   margin: auto;
   justify-content: space-around;
 }
+
+.rotate-buttons {
+  display: flex;
+  width: 30%;
+  margin: 1rem auto;
+  justify-content: space-evenly;
+}
