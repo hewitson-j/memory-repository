@@ -55,7 +55,6 @@ export default function Book() {
   });
 
   const [rotate, setRotate] = useState(0);
-  // const [carouselHeight, setCarouselHeight] = useState("initial");
 
   const calculateImageDimensions = (src: string) => {
     const img = new Image();
@@ -143,7 +142,11 @@ export default function Book() {
               : `${imageDimensions.height}px`,
         }}
       >
-        <button disabled={isPrevDisabled} onClick={handlePrev}>
+        <button
+          className="move-buttons"
+          disabled={isPrevDisabled}
+          onClick={handlePrev}
+        >
           Previous
         </button>
         <img
@@ -156,15 +159,19 @@ export default function Book() {
             transform: `rotate(${rotate}deg)`,
           }}
         />
-        <button disabled={isNextDisabled} onClick={handleNext}>
+        <button
+          className="move-buttons"
+          disabled={isNextDisabled}
+          onClick={handleNext}
+        >
           Next
         </button>
       </div>
-      <div className="rotate-buttons">
+      <h4>{bookPages?.[currentImage].name}</h4>
+      <div className="rotate-button-container">
         <button onClick={handleRotateLeft}>Rotate Left</button>
         <button onClick={handleRotateRight}>Rotate Right</button>
       </div>
-      <h4>{bookPages?.[currentImage].name}</h4>
     </div>
   );
 }
