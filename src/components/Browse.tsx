@@ -9,6 +9,8 @@ export default function Browse() {
   const [booksData, setBooksData] = useState<BookProps[]>();
   const [combinedData, setCombinedData] = useState<CoverProps[]>();
 
+  const [isLoading, setIsLoading] = useState(true);
+
   const fetchBookCoverPages = async () => {
     console.log("Fetching book cover pages...");
     const { data, error } = await supabase
@@ -52,12 +54,24 @@ export default function Browse() {
     setCombinedData(combined);
   }, [booksData, coversData]);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+  });
+
   return (
     <div className="browse">
-      <h3>Browse Books</h3>
-      <div className="browse-body">
-        <Covers array={combinedData || []} />
-      </div>
+      {isLoading ? (
+        <p>Loading all books...</p>
+      ) : (
+        <>
+          <h3>Browse Books</h3>
+          <div className="browse-body">
+            <Covers array={combinedData || []} />
+          </div>
+        </>
+      )}
     </div>
   );
 }
