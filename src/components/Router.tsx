@@ -5,6 +5,7 @@ import Book from "./Book";
 import Login from "./Login";
 import { useAuth } from "./hooks/useAuth";
 import Error from "./Error";
+import Contact from "./Contact";
 
 export default function Router() {
   const isAuthenticated = useAuth();
@@ -12,18 +13,20 @@ export default function Router() {
   return (
     <Routes>
       <Route path="/" element={<Login />} />
+      <Route path="contact" element={<Contact />} />
       <Route
         path="home"
-        element={isAuthenticated ? <Home /> : <Navigate to={"/denied"} />}
+        element={isAuthenticated ? <Home /> : <Navigate to={"denied"} />}
       />
       <Route
         path="browse"
-        element={isAuthenticated ? <Browse /> : <Navigate to={"/denied"} />}
+        element={isAuthenticated ? <Browse /> : <Navigate to={"denied"} />}
       />
       <Route
         path="book/:itemId"
-        element={isAuthenticated ? <Book /> : <Navigate to={"/denied"} />}
+        element={isAuthenticated ? <Book /> : <Navigate to={"denied"} />}
       />
+
       <Route
         path="denied"
         element={

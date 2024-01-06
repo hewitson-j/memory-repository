@@ -95,14 +95,14 @@ export default function Login() {
           </button>
         </form>
         <div className="sign-up">
-          <h3>Don't have an account?</h3>
+          <h3>Don't have an account or forgot your password?</h3>
           <button
             className="login-buttons"
             onClick={() => {
-              window.location.href = "mailto:jacob.a.hewitson@gmail.com";
+              navigate("contact");
             }}
           >
-            Sign up!
+            Contact Admin!
           </button>
         </div>
       </div>
