@@ -56,3 +56,20 @@
   background-color: rgb(11, 116, 169);
   cursor: pointer;
 }
+
+.password-container {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+}
+
+.password-container input {
+  width: 70%;
+}
+
+.password-container button {
+  margin: 0.5rem;
+  margin-top: 0;
+  font-size: 12pt !important;
+}
