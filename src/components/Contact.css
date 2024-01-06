@@ -1,0 +1,73 @@
+.contact form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  min-width: 350px;
+  margin: auto;
+  background-color: #0c94d8;
+  color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.505);
+}
+
+.contact form label {
+  font-size: 15pt;
+}
+
+.contact form input {
+  font-size: 15pt;
+  margin-bottom: 2rem;
+  padding: 0.5rem;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.505);
+  font-family: "Caveat", cursive, "Sevillana", cursive, "Times New Roman", Times,
+    serif;
+}
+
+.contact form select {
+  font-size: 15pt;
+  margin-bottom: 2rem;
+  padding: 0.5rem;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.505);
+  font-family: "Caveat", cursive, "Sevillana", cursive, "Times New Roman", Times,
+    serif;
+}
+
+.contact form textarea {
+  font-size: 15pt;
+  margin-bottom: 2rem;
+  padding: 0.5rem;
+  border-radius: 10px;
+  height: 6rem;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.505);
+  font-family: "Caveat", cursive, "Sevillana", cursive, "Times New Roman", Times,
+    serif;
+}
+
+.form-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 50%;
+  margin: auto;
+}
+
+.form-buttons button {
+  padding: 0.5rem;
+  font-size: 14pt;
+  font-family: "Dancing Script", cursive, "Caveat", cursive, Arial, Helvetica,
+    sans-serif;
+  color: white;
+  background-color: rgb(11, 116, 169);
+  border-radius: 10px;
+  border: none;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.583);
+}
+
+.form-buttons button:hover {
+  background-color: rgb(17, 81, 112);
+  cursor: pointer;
+}

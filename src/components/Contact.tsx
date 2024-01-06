@@ -19,6 +19,7 @@ export default function Contact() {
       alert("Name, Email, and Request Type are mandatory. Please fill out.");
       return;
     }
+
     emailjs
       .sendForm(
         "service_usm4a2p",
@@ -28,6 +29,7 @@ export default function Contact() {
       )
       .then((result) => {
         console.log(result);
+        alert("Success!");
         navigate("/");
       });
   };
@@ -44,7 +46,8 @@ export default function Contact() {
         <input
           type="text"
           id="contact-name"
-          placeholder="Name"
+          name="name"
+          placeholder="Name (required)"
           onChange={(e) => {
             setName(e.target.value);
           }}
@@ -54,7 +57,8 @@ export default function Contact() {
         <input
           type="text"
           id="contact-email"
-          placeholder="email"
+          name="email"
+          placeholder="Email (required)"
           onChange={(e) => {
             setEmail(e.target.value);
           }}
@@ -65,16 +69,24 @@ export default function Contact() {
           onChange={(e) => {
             setRequest(e.target.value);
           }}
+          name="request"
           id="request-select"
           required
-          defaultValue={"New Account"}
+          defaultValue={"default"}
         >
+          <option value={"default"} disabled hidden>
+            {`Select option (required)`}
+          </option>
           <option value={"New Account"}>New Account</option>
           <option value={"Recover Account"}>Recover Account</option>
           <option value="Add Photos/New Album">Add Photos/New Album</option>
         </select>
         <label htmlFor="form-text">Message:</label>
-        <textarea id="form-text" />
+        <textarea
+          id="form-text"
+          placeholder="Message (optional)"
+          name="message"
+        />
         <div className="form-buttons">
           <button type="submit">Submit</button>
           <button
@@ -82,7 +94,7 @@ export default function Contact() {
               navigate("/");
             }}
           >
-            Back
+            Cancel
           </button>
         </div>
       </form>

@@ -31,7 +31,7 @@ export default function Login() {
       setIsLoading(false);
     } else {
       setIsLoading(false);
-      alert(`Welcome ${data.user.email}!`);
+      console.log(`${data.user.email} signed in.`);
       navigate("home");
     }
   };
