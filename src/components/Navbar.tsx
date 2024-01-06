@@ -1,3 +1,4 @@
+import supabase from "../supabaseconfig";
 import "./Navbar.css";
 
 import { Link, useNavigate } from "react-router-dom";
@@ -5,7 +6,13 @@ import { Link, useNavigate } from "react-router-dom";
 export default function Navbar() {
   const navigate = useNavigate();
 
-  const handleSignOut = () => {
+  const handleSignOut = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      console.log(error);
+      return;
+    }
+    alert("Signed out.");
     navigate("/");
   };
 
