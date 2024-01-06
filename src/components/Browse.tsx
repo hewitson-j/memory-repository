@@ -3,6 +3,7 @@ import "./Browse.css";
 import Covers from "./Covers";
 import { BookPage, BookProps, CoverProps } from "./Interfaces";
 import supabase from "../supabaseconfig";
+import Header from "./Header";
 
 export default function Browse() {
   const [coversData, setCoversData] = useState<BookPage[]>();
@@ -61,17 +62,20 @@ export default function Browse() {
   });
 
   return (
-    <div className="browse">
-      {isLoading ? (
-        <p>Loading all books...</p>
-      ) : (
-        <>
-          <h3>Browse Books</h3>
-          <div className="browse-body">
-            <Covers array={combinedData || []} />
-          </div>
-        </>
-      )}
-    </div>
+    <>
+      <Header />
+      <div className="browse">
+        {isLoading ? (
+          <p>Loading all books...</p>
+        ) : (
+          <>
+            <h3>Browse Books</h3>
+            <div className="browse-body">
+              <Covers array={combinedData || []} />
+            </div>
+          </>
+        )}
+      </div>
+    </>
   );
 }

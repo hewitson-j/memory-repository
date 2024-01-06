@@ -3,6 +3,7 @@ import "./Book.css";
 import { useEffect, useState } from "react";
 import supabase from "../supabaseconfig";
 import { BookPage, BookProps } from "./Interfaces";
+import Header from "./Header";
 
 export default function Book() {
   const { itemId } = useParams();
@@ -137,68 +138,71 @@ export default function Book() {
   };
 
   return (
-    <div className="book">
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <>
-          <div className="book-content">
-            <h3>{book?.[0].title || "Not Found"}</h3>
-            <h4>{book?.[0].description || "Not Found"}</h4>
-            <div
-              className="image-carousel"
-              style={{
-                height:
-                  imageDimensions.width > imageDimensions.height
-                    ? `${imageDimensions.width}px`
-                    : `${imageDimensions.height}px`,
-              }}
-            >
-              <button
-                className="move-buttons"
-                disabled={isPrevDisabled}
-                onClick={handlePrev}
-              >
-                Previous
-              </button>
-              <img
-                src={bookPages?.[currentImage].image_url}
-                alt={bookPages?.[currentImage].name}
-                title={bookPages?.[currentImage].name}
+    <>
+      <Header />
+      <div className="book">
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : (
+          <>
+            <div className="book-content">
+              <h3>{book?.[0].title || "Not Found"}</h3>
+              <h4>{book?.[0].description || "Not Found"}</h4>
+              <div
+                className="image-carousel"
                 style={{
-                  width: imageDimensions.width,
-                  height: imageDimensions.height,
-                  transform: `rotate(${rotate}deg)`,
+                  height:
+                    imageDimensions.width > imageDimensions.height
+                      ? `${imageDimensions.width}px`
+                      : `${imageDimensions.height}px`,
                 }}
-              />
-              <button
-                className="move-buttons"
-                disabled={isNextDisabled}
-                onClick={handleNext}
               >
-                Next
+                <button
+                  className="move-buttons"
+                  disabled={isPrevDisabled}
+                  onClick={handlePrev}
+                >
+                  Previous
+                </button>
+                <img
+                  src={bookPages?.[currentImage].image_url}
+                  alt={bookPages?.[currentImage].name}
+                  title={bookPages?.[currentImage].name}
+                  style={{
+                    width: imageDimensions.width,
+                    height: imageDimensions.height,
+                    transform: `rotate(${rotate}deg)`,
+                  }}
+                />
+                <button
+                  className="move-buttons"
+                  disabled={isNextDisabled}
+                  onClick={handleNext}
+                >
+                  Next
+                </button>
+              </div>
+              <h4>{bookPages?.[currentImage].name}</h4>
+            </div>
+            <div className="rotate-button-container">
+              <button
+                className="rotate-buttons"
+                id="rotate-button-left"
+                onClick={handleRotateLeft}
+              >
+                Rotate Left
+              </button>
+              <button
+                className="rotate-buttons"
+                id="rotate-button-right"
+                onClick={handleRotateRight}
+              >
+                Rotate Right
               </button>
             </div>
-            <h4>{bookPages?.[currentImage].name}</h4>
-          </div>
-          <div className="rotate-button-container">
-            <button
-              className="rotate-buttons"
-              id="rotate-button-left"
-              onClick={handleRotateLeft}
-            >
-              Rotate Left
-            </button>
-            <button
-              className="rotate-buttons"
-              id="rotate-button-right"
-              onClick={handleRotateRight}
-            >
-              Rotate Right
-            </button>
-          </div>
-        </>
-      )}
-    </div>
+          </>
+        )}
+      </div>
+    </>
   );
 }

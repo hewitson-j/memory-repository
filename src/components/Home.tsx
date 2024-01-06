@@ -3,6 +3,7 @@ import supabase from "../supabaseconfig";
 import Covers from "./Covers";
 import "./Home.css";
 import { BookPage, BookProps, CoverProps } from "./Interfaces";
+import Header from "./Header";
 
 export default function Home() {
   const [coversData, setCoversData] = useState<BookPage[]>();
@@ -61,20 +62,23 @@ export default function Home() {
   });
 
   return (
-    <div className="home">
-      <h2>Welcome!</h2>
-      <p>
-        Here you can take a look at some of our popular memory books and photo
-        albums.
-      </p>
-      {isLoading ? (
-        <h3>Loading popular books...</h3>
-      ) : (
-        <>
-          <h3>Popular Books</h3>
-          <Covers array={combinedData || []} limit={4} />
-        </>
-      )}
-    </div>
+    <>
+      <Header />
+      <div className="home">
+        <h2>Welcome!</h2>
+        <p>
+          Here you can take a look at some of our popular memory books and photo
+          albums.
+        </p>
+        {isLoading ? (
+          <h3>Loading popular books...</h3>
+        ) : (
+          <>
+            <h3>Popular Books</h3>
+            <Covers array={combinedData || []} limit={4} />
+          </>
+        )}
+      </div>
+    </>
   );
 }
