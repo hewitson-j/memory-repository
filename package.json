@@ -2,8 +2,8 @@
   "name": "memory-repository",
   "private": true,
   "version": "1.0.0",
-  "homepage": "https://hewitson-j.github.io/memory-repository/",
   "type": "module",
+  "homepage": "https://hewitson-j.github.io/memory-repository/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
