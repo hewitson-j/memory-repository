@@ -26,7 +26,6 @@ export default function Router() {
         path="book/:itemId"
         element={isAuthenticated ? <Book /> : <Navigate to={"denied"} />}
       />
-
       <Route
         path="denied"
         element={
@@ -37,7 +36,7 @@ export default function Router() {
           />
         }
       />
-      <Route path="*" element={<Error />} />
+      <Route path="*" element={<Error isAuthenticated={isAuthenticated} />} />
     </Routes>
   );
 }
