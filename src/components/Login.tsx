@@ -7,6 +7,8 @@ export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const [isPasswordIncorrect, setIsPasswordIncorrect] = useState(false);
+
   const [inputType, setInputType] = useState("password");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -20,6 +22,7 @@ export default function Login() {
       return;
     }
 
+    setIsPasswordIncorrect(false);
     setIsLoading(true);
 
     const { data, error } = await supabase.auth.signInWithPassword({
@@ -27,7 +30,10 @@ export default function Login() {
       password: password,
     });
     if (error) {
-      alert("Error: " + error);
+      if (error.message.toUpperCase() === "INVALID LOGIN CREDENTIALS") {
+        setIsPasswordIncorrect(true);
+      }
+
       setIsLoading(false);
     } else {
       setIsLoading(false);
@@ -40,11 +46,29 @@ export default function Login() {
     <div className="login">
       <div className="login-content">
         <div className="login-header">
-          <h1>Memory Library</h1>
+          <h1>Hewitson Memory Library</h1>
           <h2>
-            A repository for Hewitson and Roberg family photos and scrapbooks.
+            A repository for Hewitson family photos, albums, and scrapbooks.
           </h2>
         </div>
+        {!isPasswordIncorrect ? (
+          <></>
+        ) : (
+          <div className="login-error-notification">
+            <h3>Login Error</h3>
+            <p>
+              Username or password is incorrect. Please try logging in again.
+            </p>
+            <button
+              className="login-buttons"
+              onClick={() => {
+                setIsPasswordIncorrect(false);
+              }}
+            >
+              Close
+            </button>
+          </div>
+        )}
         <form className="login-form">
           <label className="login-labels" htmlFor="username-field">
             Username:
@@ -94,6 +118,7 @@ export default function Login() {
             {isLoading ? "Signing in..." : "Submit"}
           </button>
         </form>
+
         <div className="sign-up">
           <h3>Don't have an account or forgot your password?</h3>
           <button
