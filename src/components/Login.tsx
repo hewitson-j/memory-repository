@@ -2,12 +2,14 @@ import { useState } from "react";
 import "./Login.css";
 import supabase from "../supabaseconfig";
 import { useNavigate } from "react-router-dom";
+import LoginError from "./LoginError";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const [isPasswordIncorrect, setIsPasswordIncorrect] = useState(false);
+  const [areCredentialsBlank, setAreCredentialsBlank] = useState(false);
 
   const [inputType, setInputType] = useState("password");
   const [isLoading, setIsLoading] = useState(false);
@@ -16,12 +18,11 @@ export default function Login() {
 
   const handleSignIn = async () => {
     if (username.trim() === "" || password.trim() === "") {
-      alert(
-        "Username and password cannot be blank. \n\nPlease type in both username and password."
-      );
+      setAreCredentialsBlank(true);
       return;
     }
 
+    setAreCredentialsBlank(false);
     setIsPasswordIncorrect(false);
     setIsLoading(true);
 
@@ -42,6 +43,11 @@ export default function Login() {
     }
   };
 
+  const handleCloseNotification = () => {
+    setAreCredentialsBlank(false);
+    setIsPasswordIncorrect(false);
+  };
+
   return (
     <div className="login">
       <div className="login-content">
@@ -51,24 +57,18 @@ export default function Login() {
             A repository for Hewitson family photos, albums, and scrapbooks.
           </h2>
         </div>
-        {!isPasswordIncorrect ? (
-          <></>
-        ) : (
-          <div className="login-error-notification">
-            <h3>Login Error</h3>
-            <p>
-              Username or password is incorrect. Please try logging in again.
-            </p>
-            <button
-              className="login-buttons"
-              onClick={() => {
-                setIsPasswordIncorrect(false);
-              }}
-            >
-              Close
-            </button>
-          </div>
-        )}
+        <LoginError
+          title="Username or Password Incorrect"
+          description="Username or password are incorrect. Please close this notification and try again."
+          isOpen={!isPasswordIncorrect}
+          handleClose={handleCloseNotification}
+        />
+        <LoginError
+          title="Credentials Blank"
+          description="Username and Password cannot be blank. Please fill out both fields and try again."
+          isOpen={!areCredentialsBlank}
+          handleClose={handleCloseNotification}
+        />
         <form className="login-form">
           <label className="login-labels" htmlFor="username-field">
             Username:
