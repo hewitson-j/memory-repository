@@ -76,8 +76,6 @@ export default function Contact() {
           style={{
             color: `${notificationFontColor}`,
             backgroundColor: `${notificationBackgroundColor}`,
-            // position: "absolute",
-            // left: "33%",
             width: "50%",
             margin: "auto",
             marginBottom: "1rem",

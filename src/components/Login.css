@@ -73,3 +73,23 @@
   margin-top: 0;
   font-size: 12pt !important;
 }
+
+@media screen and (max-width: 500px) {
+  .login-buttons {
+    font-size: 12pt;
+  }
+
+  .password-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .login h1 {
+    padding-top: 3rem;
+  }
+
+  .sign-up {
+    padding-bottom: 2rem;
+  }
+}
