@@ -51,6 +51,10 @@ export default function Book() {
   const [isNextDisabled, setIsNextDisabled] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
+  const [isScreenMobile, setIsScreenMobile] = useState(
+    window.innerWidth < 1060
+  );
+
   const [imageDimensions, setImageDimensions] = useState({
     width: 0,
     height: 0,
@@ -92,6 +96,18 @@ export default function Book() {
       setImageDimensions({ width, height });
     };
   };
+
+  useEffect(() => {
+    const handleScreenResize = () => {
+      setIsScreenMobile(window.innerWidth < 1060);
+    };
+
+    window.addEventListener("resize", handleScreenResize);
+
+    return () => {
+      window.removeEventListener("resize", handleScreenResize);
+    };
+  }, []);
 
   useEffect(() => {
     calculateImageDimensions(bookPages?.[currentImage].image_url || "");
@@ -142,12 +158,21 @@ export default function Book() {
       <Header />
       <div className="book">
         {isLoading ? (
-          <p>Loading...</p>
+          <p id="loading-text">Loading...</p>
         ) : (
           <>
             <div className="book-content">
               <h3>{book?.[0].title || "Not Found"}</h3>
               <h4>{book?.[0].description || "Not Found"}</h4>
+              {isScreenMobile ? (
+                <>
+                  <br />
+                  <br />
+                  <h4>{bookPages?.[currentImage].name}</h4>
+                </>
+              ) : (
+                <></>
+              )}
               <div
                 className="image-carousel"
                 style={{
@@ -157,13 +182,17 @@ export default function Book() {
                       : `${imageDimensions.height}px`,
                 }}
               >
-                <button
-                  className="move-buttons"
-                  disabled={isPrevDisabled}
-                  onClick={handlePrev}
-                >
-                  Previous
-                </button>
+                {!isScreenMobile ? (
+                  <button
+                    className="move-buttons"
+                    disabled={isPrevDisabled}
+                    onClick={handlePrev}
+                  >
+                    Previous
+                  </button>
+                ) : (
+                  <></>
+                )}
                 <img
                   src={bookPages?.[currentImage].image_url}
                   alt={bookPages?.[currentImage].name}
@@ -174,15 +203,43 @@ export default function Book() {
                     transform: `rotate(${rotate}deg)`,
                   }}
                 />
-                <button
-                  className="move-buttons"
-                  disabled={isNextDisabled}
-                  onClick={handleNext}
-                >
-                  Next
-                </button>
+                {!isScreenMobile ? (
+                  <button
+                    className="move-buttons"
+                    disabled={isNextDisabled}
+                    onClick={handleNext}
+                  >
+                    Next
+                  </button>
+                ) : (
+                  <></>
+                )}
               </div>
-              <h4>{bookPages?.[currentImage].name}</h4>
+              {!isScreenMobile ? (
+                <h4>{bookPages?.[currentImage].name}</h4>
+              ) : (
+                <></>
+              )}
+              {isScreenMobile ? (
+                <div className="mobile-move-buttons">
+                  <button
+                    className="move-buttons"
+                    disabled={isPrevDisabled}
+                    onClick={handlePrev}
+                  >
+                    Previous
+                  </button>
+                  <button
+                    className="move-buttons"
+                    disabled={isNextDisabled}
+                    onClick={handleNext}
+                  >
+                    Next
+                  </button>
+                </div>
+              ) : (
+                <></>
+              )}
             </div>
             <div className="rotate-button-container">
               <button

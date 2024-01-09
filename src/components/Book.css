@@ -89,6 +89,17 @@
   animation: rotateRight 0.5s linear;
 }
 
+#loading-text {
+  color: black;
+}
+
+.mobile-move-buttons {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  justify-content: space-around;
+}
+
 @keyframes rotateRight {
   0% {
     transform: rotate(0deg);
