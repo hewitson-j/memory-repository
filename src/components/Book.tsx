@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import supabase from "../supabaseconfig";
 import { BookPage, BookProps } from "./Interfaces";
 import Header from "./Header";
+import Copyright from "./Copyright";
 
 export default function Book() {
   const { itemId } = useParams();
@@ -260,6 +261,7 @@ export default function Book() {
           </>
         )}
       </div>
+      <Copyright width={70} />
     </>
   );
 }

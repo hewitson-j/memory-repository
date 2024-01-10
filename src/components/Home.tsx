@@ -4,6 +4,7 @@ import Covers from "./Covers";
 import "./Home.css";
 import { BookPage, BookProps, CoverProps } from "./Interfaces";
 import Header from "./Header";
+import Copyright from "./Copyright";
 
 export default function Home() {
   const [coversData, setCoversData] = useState<BookPage[]>();
@@ -79,6 +80,7 @@ export default function Home() {
           </>
         )}
       </div>
+      <Copyright width={50} />
     </>
   );
 }

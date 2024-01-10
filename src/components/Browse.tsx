@@ -4,6 +4,7 @@ import Covers from "./Covers";
 import { BookPage, BookProps, CoverProps } from "./Interfaces";
 import supabase from "../supabaseconfig";
 import Header from "./Header";
+import Copyright from "./Copyright";
 
 export default function Browse() {
   const [coversData, setCoversData] = useState<BookPage[]>();
@@ -76,6 +77,7 @@ export default function Browse() {
           </>
         )}
       </div>
+      <Copyright width={50} />
     </>
   );
 }
