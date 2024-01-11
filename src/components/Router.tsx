@@ -7,6 +7,7 @@ import { useAuth } from "./hooks/useAuth";
 import Error from "./Error";
 import Contact from "./Contact";
 import TermsOfService from "./TermsOfService";
+import PrivacyPolicy from "./PrivacyPolicy";
 
 export default function Router() {
   const isAuthenticated = useAuth();
@@ -28,6 +29,7 @@ export default function Router() {
         element={isAuthenticated ? <Book /> : <Navigate to={"denied"} />}
       />
       <Route path="terms-of-service" element={<TermsOfService />} />
+      <Route path="privacy-policy" element={<PrivacyPolicy />} />
       <Route
         path="denied"
         element={

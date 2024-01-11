@@ -1,0 +1,17 @@
+.privacy-policy {
+  width: 70%;
+  margin: auto;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.privacy-policy ul {
+  text-align: left;
+  width: 50%;
+  margin: auto;
+}
+
+.pp-data-types {
+  width: 20%;
+  min-width: 250px;
+  margin: auto;
+}
