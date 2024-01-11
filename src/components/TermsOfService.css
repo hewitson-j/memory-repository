@@ -1,0 +1,11 @@
+.terms-of-service {
+  width: 70%;
+  margin: auto;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.terms-of-service ul {
+  text-align: left;
+  width: 50%;
+  margin: auto;
+}

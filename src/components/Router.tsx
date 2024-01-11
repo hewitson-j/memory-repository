@@ -6,6 +6,7 @@ import Login from "./Login";
 import { useAuth } from "./hooks/useAuth";
 import Error from "./Error";
 import Contact from "./Contact";
+import TermsOfService from "./TermsOfService";
 
 export default function Router() {
   const isAuthenticated = useAuth();
@@ -26,6 +27,7 @@ export default function Router() {
         path="book/:itemId"
         element={isAuthenticated ? <Book /> : <Navigate to={"denied"} />}
       />
+      <Route path="terms-of-service" element={<TermsOfService />} />
       <Route
         path="denied"
         element={
