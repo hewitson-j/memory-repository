@@ -7,7 +7,7 @@ export default function PrivacyPolicy() {
       <h1>Privacy Policy</h1>
       <p>Last updated: January 11, 2024</p>
       <Link to={"/"}>
-        <button>Back to Login</button>
+        <button className="legal-buttons">Back to Login</button>
       </Link>
       <p>
         This Privacy Policy describes Our policies and procedures on the

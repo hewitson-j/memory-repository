@@ -7,7 +7,7 @@ export default function TermsOfService() {
       <h1>Terms and Conditions</h1>
       <p>Last updated: January 11, 2024</p>
       <Link to={"/"}>
-        <button>Back to Login</button>
+        <button className="legal-buttons">Back to Login</button>
       </Link>
       <p>
         Please read these terms and conditions carefully before using Our
