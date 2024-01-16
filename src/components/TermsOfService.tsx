@@ -1,14 +1,23 @@
 import { Link } from "react-router-dom";
 import "./TermsOfService.css";
+import { useAuth } from "./hooks/useAuth";
 
 export default function TermsOfService() {
+  const isAuthenticated = useAuth();
+
   return (
     <div className="terms-of-service">
       <h1>Terms and Conditions</h1>
       <p>Last updated: January 11, 2024</p>
-      <Link to={"/"}>
-        <button className="legal-buttons">Back to Login</button>
-      </Link>
+      {isAuthenticated ? (
+        <Link to={"/home"}>
+          <button className="legal-buttons">Back to Home</button>
+        </Link>
+      ) : (
+        <Link to={"/"}>
+          <button className="legal-buttons">Back to Login</button>
+        </Link>
+      )}
       <p>
         Please read these terms and conditions carefully before using Our
         Service.

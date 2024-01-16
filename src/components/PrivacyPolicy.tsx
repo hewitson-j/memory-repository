@@ -1,14 +1,23 @@
 import { Link } from "react-router-dom";
 import "./PrivacyPolicy.css";
+import { useAuth } from "./hooks/useAuth";
 
 export default function PrivacyPolicy() {
+  const isAuthenticated = useAuth();
+
   return (
     <div className="privacy-policy">
       <h1>Privacy Policy</h1>
       <p>Last updated: January 11, 2024</p>
-      <Link to={"/"}>
-        <button className="legal-buttons">Back to Login</button>
-      </Link>
+      {isAuthenticated ? (
+        <Link to={"/home"}>
+          <button className="legal-buttons">Back to Home</button>
+        </Link>
+      ) : (
+        <Link to={"/"}>
+          <button className="legal-buttons">Back to Login</button>
+        </Link>
+      )}
       <p>
         This Privacy Policy describes Our policies and procedures on the
         collection, use and disclosure of Your information when You use the
