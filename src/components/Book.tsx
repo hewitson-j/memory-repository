@@ -12,6 +12,18 @@ export default function Book() {
   const [bookPages, setBookPages] = useState<BookPage[]>();
   const [book, setBook] = useState<BookProps[]>();
 
+  const fetchBookImageUrl = async (imagePathName: string) => {
+    const { data, error } = await supabase.storage
+      .from("images")
+      .download(imagePathName);
+
+    if (error) {
+      console.log("Error: " + error);
+      return null;
+    }
+    return URL.createObjectURL(data);
+  };
+
   const fetchBookPages = async () => {
     const { data, error } = await supabase
       .from("book_page")
@@ -21,8 +33,21 @@ export default function Book() {
 
     if (error) {
       console.log(error);
+    }
+
+    if (data) {
+      const pagesWithImages = await Promise.all(
+        data.map(async (page) => {
+          const imageUrl = await fetchBookImageUrl(
+            `book${itemId}/` + page.image_name
+          );
+          return { ...page, image_url: imageUrl };
+        })
+      );
+
+      setBookPages(pagesWithImages);
     } else {
-      setBookPages(data);
+      console.log("Error in loading images.");
     }
   };
 
@@ -117,7 +142,7 @@ export default function Book() {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 3000);
   });
 
   const handlePrev = () => {
