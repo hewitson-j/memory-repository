@@ -13,6 +13,18 @@ export default function Browse() {
 
   const [isLoading, setIsLoading] = useState(true);
 
+  const fetchBookImageUrl = async (imagePathName: string) => {
+    const { data, error } = await supabase.storage
+      .from("images")
+      .download(imagePathName);
+
+    if (error) {
+      console.log("Error: " + error);
+      return null;
+    }
+    return URL.createObjectURL(data);
+  };
+
   const fetchBookCoverPages = async () => {
     console.log("Fetching book cover pages...");
     const { data, error } = await supabase
@@ -21,8 +33,16 @@ export default function Browse() {
       .eq("is_cover", "true");
     if (error) {
       console.error("Error fetching data:", error);
-    } else {
-      setCoversData(data);
+    }
+    if (data) {
+      const coversWithImages = await Promise.all(
+        data.map(async (page) => {
+          const imageUrl = await fetchBookImageUrl(`covers/` + page.image_name);
+          return { ...page, image_url: imageUrl };
+        })
+      );
+
+      setCoversData(coversWithImages);
     }
     console.log("Fetched.");
   };
