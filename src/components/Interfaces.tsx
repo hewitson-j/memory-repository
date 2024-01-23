@@ -4,6 +4,7 @@ export interface BookPage {
   image_url: string;
   book: number;
   is_cover: boolean;
+  image_name: string;
 }
 
 export interface BookProps {
