@@ -8,6 +8,7 @@ import Error from "./Error";
 import Contact from "./Contact";
 import TermsOfService from "./TermsOfService";
 import PrivacyPolicy from "./PrivacyPolicy";
+import Upload from "./Upload";
 
 export default function Router() {
   const isAuthenticated = useAuth();
@@ -23,6 +24,10 @@ export default function Router() {
       <Route
         path="browse"
         element={isAuthenticated ? <Browse /> : <Navigate to={"denied"} />}
+      />
+      <Route
+        path="upload"
+        element={isAuthenticated ? <Upload /> : <Navigate to={"denied"} />}
       />
       <Route
         path="book/:itemId"

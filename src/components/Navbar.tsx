@@ -28,6 +28,9 @@ export default function Navbar() {
       <Link to={"/browse"} title="Browse Books">
         <button>Browse Books</button>
       </Link>
+      <Link to={"/upload"} title="Browse Books">
+        <button>Upload</button>
+      </Link>
       <button onClick={handleSignOut}>
         {!isSigningOut ? "Sign Out" : "Signing Out..."}
       </button>
