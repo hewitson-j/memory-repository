@@ -22,7 +22,7 @@ export default function MobileNavbar() {
 
   return (
     <div className="mobile-navbar">
-      <p>
+      <h3>
         <button
           onClick={() => {
             setIsOpen(!isOpen);
@@ -30,17 +30,23 @@ export default function MobileNavbar() {
         >
           ☰
         </button>
-      </p>
+      </h3>
       {isOpen ? (
         <ul>
           <li>
-            <Link to={"/home"}>Home</Link>
+            <Link to={"/home"} className="mobile-navbar-links">
+              Home
+            </Link>
           </li>
           <li>
-            <Link to={"/browse"}>Browse</Link>
+            <Link to={"/browse"} className="mobile-navbar-links">
+              Browse
+            </Link>
           </li>
           <li>
-            <Link to={"/upload"}>Upload</Link>
+            <Link to={"/upload"} className="mobile-navbar-links">
+              Upload
+            </Link>
           </li>
           <li onClick={handleSignOut}>
             {!isSigningOut ? "Sign Out" : "Signing Out..."}
