@@ -50,6 +50,7 @@ export default function Upload() {
         console.log(error);
       } else {
         console.log(data);
+        alert("Success!");
         navigate("/home");
       }
     }
@@ -76,6 +77,7 @@ export default function Upload() {
             setImageName(e.target.value);
           }}
         />
+        <label htmlFor="upload-select">Book</label>
         <select
           id="upload-select"
           onChange={(e) => {
