@@ -1,8 +1,24 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import supabase from "../supabaseconfig";
+import "./MobileNavbar.css";
 
 export default function MobileNavbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isSigningOut, setIsSigningOut] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleSignOut = async () => {
+    setIsSigningOut(true);
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      console.log(error);
+      setIsSigningOut(false);
+      return;
+    }
+    navigate("/");
+  };
 
   return (
     <div className="mobile-navbar">
@@ -26,8 +42,8 @@ export default function MobileNavbar() {
           <li>
             <Link to={"/upload"}>Upload</Link>
           </li>
-          <li>
-            <Link to={"/home"}>Sign Out</Link>
+          <li onClick={handleSignOut}>
+            {!isSigningOut ? "Sign Out" : "Signing Out..."}
           </li>
         </ul>
       ) : (
