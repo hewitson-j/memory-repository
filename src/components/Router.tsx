@@ -19,15 +19,15 @@ export default function Router() {
       <Route path="contact" element={<Contact />} />
       <Route
         path="home"
-        element={isAuthenticated ? <Home /> : <Navigate to={"denied"} />}
+        element={isAuthenticated ? <Home /> : <Navigate to={"/denied"} />}
       />
       <Route
         path="browse"
-        element={isAuthenticated ? <Browse /> : <Navigate to={"denied"} />}
+        element={isAuthenticated ? <Browse /> : <Navigate to={"/denied"} />}
       />
       <Route
         path="upload"
-        element={isAuthenticated ? <Upload /> : <Navigate to={"denied"} />}
+        element={isAuthenticated ? <Upload /> : <Navigate to={"/denied"} />}
       />
       <Route
         path="upload/success"
@@ -39,13 +39,13 @@ export default function Router() {
               isAuthenticated={isAuthenticated}
             />
           ) : (
-            <Navigate to={"denied"} />
+            <Navigate to={"/denied"} />
           )
         }
       />
       <Route
         path="book/:itemId"
-        element={isAuthenticated ? <Book /> : <Navigate to={"denied"} />}
+        element={isAuthenticated ? <Book /> : <Navigate to={"/denied"} />}
       />
       <Route path="terms-of-service" element={<TermsOfService />} />
       <Route path="privacy-policy" element={<PrivacyPolicy />} />
