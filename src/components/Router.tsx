@@ -4,7 +4,7 @@ import Browse from "./Browse";
 import Book from "./Book";
 import Login from "./Login";
 import { useAuth } from "./hooks/useAuth";
-import Error from "./Error";
+import Message from "./Message";
 import Contact from "./Contact";
 import TermsOfService from "./TermsOfService";
 import PrivacyPolicy from "./PrivacyPolicy";
@@ -19,33 +19,47 @@ export default function Router() {
       <Route path="contact" element={<Contact />} />
       <Route
         path="home"
-        element={isAuthenticated ? <Home /> : <Navigate to={"denied"} />}
+        element={isAuthenticated ? <Home /> : <Navigate to={"/denied"} />}
       />
       <Route
         path="browse"
-        element={isAuthenticated ? <Browse /> : <Navigate to={"denied"} />}
+        element={isAuthenticated ? <Browse /> : <Navigate to={"/denied"} />}
       />
       <Route
         path="upload"
-        element={isAuthenticated ? <Upload /> : <Navigate to={"denied"} />}
+        element={isAuthenticated ? <Upload /> : <Navigate to={"/denied"} />}
+      />
+      <Route
+        path="upload/success"
+        element={
+          isAuthenticated ? (
+            <Message
+              title="Success!"
+              description="Your photo has been received. Our administrators will determine if the photo requirements and display it within 48 hours."
+              isAuthenticated={isAuthenticated}
+            />
+          ) : (
+            <Navigate to={"/denied"} />
+          )
+        }
       />
       <Route
         path="book/:itemId"
-        element={isAuthenticated ? <Book /> : <Navigate to={"denied"} />}
+        element={isAuthenticated ? <Book /> : <Navigate to={"/denied"} />}
       />
       <Route path="terms-of-service" element={<TermsOfService />} />
       <Route path="privacy-policy" element={<PrivacyPolicy />} />
       <Route
         path="denied"
         element={
-          <Error
+          <Message
             title="403 - Access Denied"
             description="You are not allowed to access this page. Use the button below to return
         to the login screen and try signing in again."
           />
         }
       />
-      <Route path="*" element={<Error isAuthenticated={isAuthenticated} />} />
+      <Route path="*" element={<Message isAuthenticated={isAuthenticated} />} />
     </Routes>
   );
 }
