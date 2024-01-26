@@ -12,6 +12,8 @@ export default function Upload() {
   const [newBookName, setNewBookName] = useState("");
   const [file, setFile] = useState<File | null>(null);
 
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState(false);
+
   const navigate = useNavigate();
 
   const fetchBooks = async () => {
@@ -27,14 +29,17 @@ export default function Upload() {
   };
 
   const handleUploadFile = async () => {
+    setIsSubmitDisabled(true);
     if (bookName.trim() === "" && newBookName.trim() === "") {
       alert(
         "Please make sure you have a book selected. If you chose other, please ensure you add the name of the new book."
       );
+      setIsSubmitDisabled(false);
       return;
     }
     if (file === null) {
       alert("Image file required. Please upload.");
+      setIsSubmitDisabled(false);
       return;
     }
 
@@ -126,6 +131,8 @@ export default function Upload() {
             e.preventDefault();
             handleUploadFile();
           }}
+          disabled={isSubmitDisabled}
+          id="upload-form-submit-button"
         >
           Submit
         </button>

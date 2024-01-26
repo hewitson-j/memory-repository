@@ -42,7 +42,7 @@ input[type="file"]::-webkit-file-upload-button:hover {
   cursor: pointer;
 }
 
-.upload-form button {
+#upload-form-submit-button {
   padding: 0.5rem;
   font-size: 14pt;
   font-family: "Dancing Script", cursive, "Caveat", cursive, Arial, Helvetica,
@@ -56,9 +56,13 @@ input[type="file"]::-webkit-file-upload-button:hover {
   margin: auto;
 }
 
-.upload-form button:hover {
+#upload-form-submit-button:hover {
   background-color: rgb(11, 116, 169);
   cursor: pointer;
+}
+
+#upload-form-submit-button:disabled {
+  background-color: rgb(107, 115, 119);
 }
 
 .upload-form select {
