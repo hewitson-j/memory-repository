@@ -91,7 +91,9 @@ export default function Upload() {
               </option>
             );
           })}
-          <option value={"other"}>Other</option>
+          <option value={"other"} selected>
+            Other
+          </option>
         </select>
         {bookName !== "other" ? (
           <></>
