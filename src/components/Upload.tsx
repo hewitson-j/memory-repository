@@ -53,10 +53,10 @@ export default function Upload() {
         });
       if (error) {
         console.log(error);
+        alert("Something went wrong, please try again later.");
       } else {
         console.log(data);
-        alert("Success!");
-        navigate("/home");
+        navigate("/upload/success");
       }
     }
   };

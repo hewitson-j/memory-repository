@@ -30,6 +30,20 @@ export default function Router() {
         element={isAuthenticated ? <Upload /> : <Navigate to={"denied"} />}
       />
       <Route
+        path="upload/success"
+        element={
+          isAuthenticated ? (
+            <Error
+              title="Success!"
+              description="Your photo has been received. Our administrators will determine if the photo requirements and display it within 48 hours."
+              isAuthenticated={isAuthenticated}
+            />
+          ) : (
+            <Navigate to={"denied"} />
+          )
+        }
+      />
+      <Route
         path="book/:itemId"
         element={isAuthenticated ? <Book /> : <Navigate to={"denied"} />}
       />
