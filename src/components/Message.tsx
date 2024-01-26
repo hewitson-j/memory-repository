@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./Error.css";
+import "./Message.css";
 
 interface ErrorProps {
   title?: string;
@@ -7,13 +7,13 @@ interface ErrorProps {
   isAuthenticated?: boolean;
 }
 
-export default function Error({
+export default function Message({
   title = "404 - Not Found",
   description = "Whoops! It looks like you've come to a non-existing page. Please click the button below to return.",
   isAuthenticated,
 }: ErrorProps) {
   return (
-    <div className="error">
+    <div className="message">
       <h1>{title}</h1>
       <h2>{description}</h2>
       {isAuthenticated ? (
