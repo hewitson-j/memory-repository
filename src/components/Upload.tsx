@@ -4,6 +4,7 @@ import Header from "./Header";
 import "./Upload.css";
 import { BookProps } from "./Interfaces";
 import { useNavigate } from "react-router-dom";
+import Copyright from "./Copyright";
 
 export default function Upload() {
   const [bookTitles, setBookTitles] = useState<BookProps[]>([]);
@@ -13,6 +14,7 @@ export default function Upload() {
   const [file, setFile] = useState<File | null>(null);
 
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(false);
+  const [isRulesHidden, setIsRulesHidden] = useState(true);
 
   const navigate = useNavigate();
 
@@ -68,13 +70,37 @@ export default function Upload() {
   return (
     <div className="upload">
       <Header />
-      <h3>Upload Photo</h3>
-      <p>
-        Use this form to upload photos you would like to be included in one of
-        the albums.
-      </p>
+      <div className="upload-header">
+        <h3>Upload Photo</h3>
+        <h4>
+          Use this form to upload photos you would like to be included in one of
+          the albums. Please make sure the photo meets the photo rules.
+        </h4>
+      </div>
+      <button
+        onClick={() => {
+          setIsRulesHidden(!isRulesHidden);
+        }}
+        className="upload-form-buttons"
+        id="upload-rules-button"
+      >
+        {isRulesHidden ? "Show Rules" : "Hide Rules"}
+      </button>
+      {!isRulesHidden ? (
+        <ul className="upload-rules-list">
+          <li>Files should be in .jpeg or .png format.</li>
+          <li>
+            Images should not contain violence, drugs, nudity, or any otherwise
+            inappropriate content.
+          </li>
+        </ul>
+      ) : (
+        <></>
+      )}
       <form className="upload-form">
-        <label htmlFor="upload-image-name">Image Name</label>
+        <label htmlFor="upload-image-name" className="upload-form-labels">
+          Image Name
+        </label>
         <input
           type="text"
           id="upload-image-name"
@@ -82,7 +108,9 @@ export default function Upload() {
             setImageName(e.target.value);
           }}
         />
-        <label htmlFor="upload-select">Book</label>
+        <label htmlFor="upload-select" className="upload-form-labels">
+          Book
+        </label>
         <select
           id="upload-select"
           onChange={(e) => {
@@ -104,7 +132,9 @@ export default function Upload() {
           <></>
         ) : (
           <>
-            <label htmlFor="upload-new-book">New Book Name</label>
+            <label htmlFor="upload-new-book" className="upload-form-labels">
+              New Book Name
+            </label>
             <input
               type="text"
               id="upload-new-book"
@@ -133,10 +163,16 @@ export default function Upload() {
           }}
           disabled={isSubmitDisabled}
           id="upload-form-submit-button"
+          className="upload-form-buttons"
         >
           Submit
         </button>
       </form>
+      <p id="upload-disclaimer">
+        *Photos uploaded will be reviewed by an administrator to ensure
+        compliance with photo rules before they are shown on the website.
+      </p>
+      <Copyright width={50} />
     </div>
   );
 }

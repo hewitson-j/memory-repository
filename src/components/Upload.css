@@ -4,6 +4,7 @@
   min-width: 300px;
   flex-direction: column;
   margin: auto;
+  margin-top: 2rem;
   text-align: center;
 }
 
@@ -42,7 +43,7 @@ input[type="file"]::-webkit-file-upload-button:hover {
   cursor: pointer;
 }
 
-#upload-form-submit-button {
+.upload-form-buttons {
   padding: 0.5rem;
   font-size: 14pt;
   font-family: "Dancing Script", cursive, "Caveat", cursive, Arial, Helvetica,
@@ -56,12 +57,12 @@ input[type="file"]::-webkit-file-upload-button:hover {
   margin: auto;
 }
 
-#upload-form-submit-button:hover {
+.upload-form-buttons:hover {
   background-color: rgb(11, 116, 169);
   cursor: pointer;
 }
 
-#upload-form-submit-button:disabled {
+.upload-form-buttons:disabled {
   background-color: rgb(107, 115, 119);
 }
 
@@ -74,4 +75,35 @@ input[type="file"]::-webkit-file-upload-button:hover {
   font-family: "Caveat", cursive, Arial, Helvetica;
   border-radius: 10px;
   margin-bottom: 1rem;
+}
+
+.upload-form-labels {
+  font-size: 16pt;
+}
+
+.upload-header {
+  width: 50%;
+  min-width: 300px;
+  margin: auto;
+}
+
+.upload-header h3 {
+  font-size: 20pt;
+}
+
+.upload-header h4 {
+  font-size: 16pt;
+}
+
+#upload-disclaimer {
+  width: 40%;
+  min-width: 300px;
+  margin: 1rem auto;
+}
+
+.upload ul {
+  width: 40%;
+  min-width: 300px;
+  text-align: left;
+  margin: 1rem auto;
 }
