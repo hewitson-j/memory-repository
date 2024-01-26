@@ -4,6 +4,9 @@
   align-items: center;
   justify-content: center;
   height: 90vh;
+  width: 70%;
+  min-width: 300px;
+  margin: auto;
 }
 
 .error button {
