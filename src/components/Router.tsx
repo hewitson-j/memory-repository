@@ -35,7 +35,7 @@ export default function Router() {
           isAuthenticated ? (
             <Message
               title="Success!"
-              description="Your photo has been received. Our administrators will determine if the photo requirements and display it within 48 hours."
+              description="Your photo has been received. Our administrators will determine if the photo requirements and display it as soon as possible."
               isAuthenticated={isAuthenticated}
             />
           ) : (
