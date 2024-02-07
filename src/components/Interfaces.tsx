@@ -11,6 +11,7 @@ export interface BookProps {
   id: number;
   title: string;
   description: string;
+  clicks: number;
 }
 export interface CoverProps {
   id: number;
