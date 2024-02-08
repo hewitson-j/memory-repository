@@ -22,6 +22,7 @@ export default function Covers({ array, limit }: CoversProps) {
             title={entry.title}
             imageSource={entry.imageSource}
             description={entry.description}
+            clicks={entry.clicks}
           />
         );
       })}
