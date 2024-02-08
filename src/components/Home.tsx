@@ -72,6 +72,7 @@ export default function Home() {
         title: book.title,
         description: book.description,
         imageSource: cover?.image_url,
+        clicks: book.clicks,
       };
     });
     setCombinedData(combined);

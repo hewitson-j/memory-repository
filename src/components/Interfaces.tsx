@@ -18,4 +18,5 @@ export interface CoverProps {
   imageSource?: string;
   title?: string;
   description?: string;
+  clicks?: number;
 }
