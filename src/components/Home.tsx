@@ -93,7 +93,7 @@ export default function Home() {
           albums.
         </p>
         {isLoading ? (
-          <h3>Loading popular books...</h3>
+          <h3 className="loading-notifications">Loading popular books...</h3>
         ) : (
           <>
             <h3>Popular Books</h3>

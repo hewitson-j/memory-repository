@@ -184,7 +184,9 @@ export default function Book() {
       <Header />
       <div className="book">
         {isLoading ? (
-          <p id="loading-text">Loading...</p>
+          <h3 className="loading-notifications" id="loading-text">
+            Loading...
+          </h3>
         ) : (
           <>
             <div className="book-content">

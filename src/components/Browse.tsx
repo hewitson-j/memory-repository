@@ -87,7 +87,7 @@ export default function Browse() {
       <Header />
       <div className="browse">
         {isLoading ? (
-          <p>Loading all books...</p>
+          <h3 className="loading-notifications">Loading all books...</h3>
         ) : (
           <>
             <h3>Browse Books</h3>

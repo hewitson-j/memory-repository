@@ -89,10 +89,6 @@
   animation: rotateRight 0.5s linear;
 }
 
-#loading-text {
-  color: black;
-}
-
 .mobile-move-buttons {
   display: flex;
   flex-wrap: nowrap;
