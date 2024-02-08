@@ -50,7 +50,11 @@ export default function Home() {
 
   const fetchBooks = async () => {
     console.log("Fetching books...");
-    const { data, error } = await supabase.from("book").select("*");
+    const { data, error } = await supabase
+      .from("book")
+      .select("*")
+      .limit(4)
+      .order("clicks", { ascending: false });
     if (error) {
       console.error("Error fetching data:", error);
     } else {
