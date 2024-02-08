@@ -4,14 +4,9 @@ import { CoverProps } from "./Interfaces";
 
 interface CoversProps {
   array: CoverProps[];
-  limit?: number;
 }
 
-export default function Covers({ array, limit }: CoversProps) {
-  if (limit && array.length > limit) {
-    array = array.slice(0, limit);
-  }
-
+export default function Covers({ array }: CoversProps) {
   return (
     <div className="covers">
       {array.map((entry) => {
@@ -22,6 +17,7 @@ export default function Covers({ array, limit }: CoversProps) {
             title={entry.title}
             imageSource={entry.imageSource}
             description={entry.description}
+            clicks={entry.clicks}
           />
         );
       })}

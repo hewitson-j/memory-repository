@@ -50,7 +50,11 @@ export default function Home() {
 
   const fetchBooks = async () => {
     console.log("Fetching books...");
-    const { data, error } = await supabase.from("book").select("*");
+    const { data, error } = await supabase
+      .from("book")
+      .select("*")
+      .limit(4)
+      .order("clicks", { ascending: false });
     if (error) {
       console.error("Error fetching data:", error);
     } else {
@@ -72,6 +76,7 @@ export default function Home() {
         title: book.title,
         description: book.description,
         imageSource: cover?.image_url,
+        clicks: book.clicks,
       };
     });
     setCombinedData(combined);
@@ -97,7 +102,7 @@ export default function Home() {
         ) : (
           <>
             <h3>Popular Books</h3>
-            <Covers array={combinedData || []} limit={4} />
+            <Covers array={combinedData || []} />
           </>
         )}
       </div>
