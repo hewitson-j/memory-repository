@@ -102,7 +102,7 @@ export default function Home() {
         ) : (
           <>
             <h3>Popular Books</h3>
-            <Covers array={combinedData || []} limit={4} />
+            <Covers array={combinedData || []} />
           </>
         )}
       </div>
