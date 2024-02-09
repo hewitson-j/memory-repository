@@ -9,3 +9,15 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
+
+.home h2 {
+  font-size: 22pt;
+}
+
+#home-intro {
+  font-size: 16pt;
+}
+
+#home-title {
+  font-size: 20pt;
+}

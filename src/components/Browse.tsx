@@ -90,7 +90,7 @@ export default function Browse() {
           <h3 className="loading-notifications">Loading all books...</h3>
         ) : (
           <>
-            <h3>Browse Books</h3>
+            <h3 id="browse-title">Browse All Books</h3>
             <div className="browse-body">
               <Covers array={combinedData || []} />
             </div>

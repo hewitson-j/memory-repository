@@ -1,3 +1,7 @@
 .browse {
   padding: 2rem;
 }
+
+#browse-title {
+  font-size: 20pt;
+}

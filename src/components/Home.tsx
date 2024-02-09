@@ -93,7 +93,7 @@ export default function Home() {
       <Header />
       <div className="home">
         <h2>Welcome!</h2>
-        <p>
+        <p id="home-intro">
           Here you can take a look at some of our popular memory books and photo
           albums.
         </p>
@@ -101,7 +101,7 @@ export default function Home() {
           <h3 className="loading-notifications">Loading popular books...</h3>
         ) : (
           <>
-            <h3>Popular Books</h3>
+            <h3 id="home-title">Popular Books</h3>
             <Covers array={combinedData || []} />
           </>
         )}
