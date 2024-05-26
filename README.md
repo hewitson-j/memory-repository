@@ -9,3 +9,6 @@ Simply login with your user credentials and you will be able to use the app. On 
 ## Albums
 
 Users can click on any album to be brought to all the photos of their respective album.
+
+## Photos
+One users have entered a specific album, they are free to click the next or back buttons to flip through the photos. They can also rotate the photo.
