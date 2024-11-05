@@ -14,4 +14,4 @@ Users can click on any album to be brought to all the photos of their respective
 One users have entered a specific album, they are free to click the next or back buttons to flip through the photos. 
 They can also rotate the photo 90 degrees by clicking the applicable buttons.
 
-## Other
+## Terms
